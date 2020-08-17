@@ -1,6 +1,6 @@
 {
-  "name": "origin-ui",
-  "version": "0.1.0",
+  "name": "origin",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -33,5 +33,24 @@
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "description": "作者：史德凯",
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shi-Dekai/origin-ui.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "史德凯",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Shi-Dekai/origin-ui/issues"
+  },
+  "homepage": "https://github.com/Shi-Dekai/origin-ui#readme"
 }

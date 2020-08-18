@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Button>按钮</Button>
-    <Button icon="setting">按钮</Button>
+    <Button icon="loading">按钮</Button>
     <Button icon="setting" icon-position="right">按钮</Button>
   </div>
 </template>

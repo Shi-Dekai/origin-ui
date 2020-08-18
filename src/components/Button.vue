@@ -1,6 +1,7 @@
 <template>
     <button class="button" :class="{[`icon-${iconPosition}`]:true}">
       <Icon class="icon" v-if="icon" :name="icon"/>
+      <Icon class="loading" :name="icon"/>
       <span class=content>
         <slot></slot>
       </span>
@@ -24,6 +25,13 @@
 </script>
 
 <style lang="scss" scoped>
+  @keyframes spin {
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+  }
+  .loading{
+    animation: spin 2s infinite linear;
+  }
   .button {
     font-size: 14px;
     height: 32px;

@@ -1,7 +1,7 @@
 <template>
-    <button class="button" :class="{[`icon-${iconPosition}`]:true}">
-      <Icon class="icon" v-if="icon" :name="icon"/>
-      <Icon class="loading" :name="icon"/>
+    <button class="button" :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')">
+      <Icon class="icon" v-if="icon && !loading" :name="icon"/>
+      <Icon class="loading icon" v-if="loading" name="loading"/>
       <span class=content>
         <slot></slot>
       </span>
@@ -20,7 +20,7 @@
     @Prop({type:String,default:'left',
       validator(value: string): boolean {return value === 'left' || value === 'right';}})
     iconPosition?: string;
-
+    @Prop({type:Boolean,default:false}) loading?: boolean;
   }
 </script>
 

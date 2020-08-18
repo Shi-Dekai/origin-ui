@@ -16,7 +16,9 @@
   @Component
   export default class Button extends Vue {
     @Prop(String) icon?: string;
-    @Prop(String) iconPosition?: string;
+    @Prop({type:String,default:'left',
+      validator(value: string): boolean {return value === 'left' || value === 'right';}})
+    iconPosition?: string;
 
   }
 </script>

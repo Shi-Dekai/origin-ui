@@ -9,9 +9,11 @@
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
   import Button from '@/components/Button.vue';
+  import Icon from '@/components/Icon.vue';
 
   @Component({
     components: {
+      Icon,
       Button
     },
   })

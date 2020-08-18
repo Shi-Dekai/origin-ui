@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <Button/>
+    <Button>按钮</Button>
+    <Button icon="setting">按钮</Button>
+    <Button icon="setting" icon-position="right">按钮</Button>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import Button from '@/components/Button.vue';
+  import {Component, Vue} from 'vue-property-decorator';
+  import Button from '@/components/Button.vue';
 
-@Component({
-  components: {
-    Button
-  },
-})
-export default class App extends Vue {}
+  @Component({
+    components: {
+      Button
+    },
+  })
+  export default class App extends Vue {}
 </script>
 
 <style lang="scss">
-  #app{
+  #app {
     margin: 20px;
   }
 
-  *{box-sizing: border-box; margin: 0; padding:0;}
-  body{
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
     font-size: 14px;
   }
 </style>

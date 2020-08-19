@@ -10,7 +10,14 @@
 
   @Component
   export default class ButtonGroup extends Vue {
-
+    mounted(){
+      for (const node of this.$el.children){
+        const nodeName = node.nodeName.toLowerCase()
+        if (nodeName !=='button'){
+          console.warn(`Button-group的子元素应该全是 button，而你写的是: ${nodeName}`);
+        }
+      }
+    }
   }
 </script>
 
@@ -18,6 +25,7 @@
   .button-group {
     display: inline-flex;
     vertical-align: middle;
+    margin-left: 5px;
     > .button{
       border-radius: 0;
       margin-left: -1px;

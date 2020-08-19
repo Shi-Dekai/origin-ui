@@ -43,8 +43,9 @@
     justify-content: center;
     align-items: center;
     vertical-align: middle;
+    margin-left: 5px;
 
-    &:hover {border-color: #666;}
+    &:hover {border-color: red;}
     &:active {background-color: #eee;}
     &:focus {outline: none;}
 

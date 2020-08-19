@@ -45,7 +45,7 @@
     vertical-align: middle;
     margin-left: 5px;
 
-    &:hover {border-color: red;}
+    &:hover {border-color: #666;}
     &:active {background-color: #eee;}
     &:focus {outline: none;}
 

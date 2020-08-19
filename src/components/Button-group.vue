@@ -25,10 +25,11 @@
   .button-group {
     display: inline-flex;
     vertical-align: middle;
-    margin-left: 5px;
     > .button{
       border-radius: 0;
-      margin-left: -1px;
+      &:not(:first-child){
+        margin-left: -1px;
+      }
       &:first-child{
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;

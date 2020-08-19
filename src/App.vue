@@ -12,6 +12,17 @@
             @click="loading3 = !loading3">
       按钮
     </Button>
+    <ButtonGroup>
+      <Button icon="left">
+        上一页
+      </Button>
+      <Button>
+        更多
+      </Button>
+      <Button icon="right" icon-position="right">
+        下一页
+      </Button>
+    </ButtonGroup>
   </div>
 </template>
 
@@ -19,9 +30,11 @@
   import {Component, Vue} from 'vue-property-decorator';
   import Button from '@/components/Button.vue';
   import Icon from '@/components/Icon.vue';
+  import ButtonGroup from '@/components/Button-group.vue';
 
   @Component({
     components: {
+      ButtonGroup,
       Icon,
       Button
     },

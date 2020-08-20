@@ -1,5 +1,5 @@
 <template>
-  <div class="button-group">
+  <div class="o-button-group">
     <slot></slot>
   </div>
 </template>
@@ -22,10 +22,10 @@
 </script>
 
 <style lang="scss" scoped>
-  .button-group {
+  .o-button-group {
     display: inline-flex;
     vertical-align: middle;
-    > .button{
+    > .o-button{
       border-radius: 0;
       &:not(:first-child){
         margin-left: -1px;

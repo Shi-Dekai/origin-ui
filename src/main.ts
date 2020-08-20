@@ -60,6 +60,7 @@ const expect = chai.expect;
   vm.$mount(div);
   const svg = vm.$el.querySelector('svg');
   const {order} = window.getComputedStyle(svg!);
+  console.log(order);
   expect(order).to.eq('2');
   vm.$el.remove();
   vm.$destroy();
@@ -73,9 +74,11 @@ const expect = chai.expect;
     }
   });
   vm.$mount();
-  const spy = chai.spy(function () {console.log('hello')});
+  const spy = chai.spy(function () {console.log()});
   vm.$on('click', spy);
   const button = vm.$el;
   button.dispatchEvent(new Event('click'));
   expect(spy).to.have.been.called();
+  vm.$el.remove();
+  vm.$destroy();
 }

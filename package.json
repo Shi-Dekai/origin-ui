@@ -48,8 +48,8 @@
     "typescript": "~3.9.3",
     "vue-template-compiler": "^2.6.11"
   },
-  "description": "作者：史德凯",
-  "main": ".eslintrc.js",
+  "description": "这是一个UI框架",
+  "main": "index.js",
   "directories": {
     "test": "tests"
   },

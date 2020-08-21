@@ -8,16 +8,6 @@
   </button>
 </template>
 
-<!--<template>-->
-<!--  <button class="o-button" :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')">-->
-
-<!--    <Icon class="loading icon" v-if="loading" name="loading"/>-->
-<!--    <Icon class="icon" v-else :name="icon"/>-->
-<!--    <span class=content>-->
-<!--        <slot></slot>-->
-<!--      </span>-->
-<!--  </button>-->
-<!--</template>-->
 
 <script lang="ts">
   import Vue from 'vue';

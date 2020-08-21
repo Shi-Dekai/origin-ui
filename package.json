@@ -1,7 +1,6 @@
 {
-  "name": "origin-ui",
+  "name": "origin",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",

@@ -13,7 +13,6 @@ new Vue({
 }).$mount('#app');
 
 
-
 //单元测试
 const expect = chai.expect;
 {
@@ -60,7 +59,6 @@ const expect = chai.expect;
   vm.$mount(div);
   const svg = vm.$el.querySelector('svg');
   const {order} = window.getComputedStyle(svg!);
-  console.log(order);
   expect(order).to.eq('2');
   vm.$el.remove();
   vm.$destroy();
@@ -74,7 +72,7 @@ const expect = chai.expect;
     }
   });
   vm.$mount();
-  const spy = chai.spy(function () {console.log()});
+  const spy = chai.spy(function () {console.log();});
   vm.$on('click', spy);
   const button = vm.$el;
   button.dispatchEvent(new Event('click'));

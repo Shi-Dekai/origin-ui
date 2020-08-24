@@ -4,7 +4,7 @@
     <Icon class="icon" v-if="icon && loading===false" :name="icon"/>
     <span class="content">
         <slot></slot>
-      </span>
+    </span>
   </button>
 </template>
 

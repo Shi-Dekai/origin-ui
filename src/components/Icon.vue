@@ -7,6 +7,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component, Prop} from 'vue-property-decorator';
+  import '../assets/Svg.js'
 
   @Component
   export default class Icon extends Vue {

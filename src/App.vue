@@ -1,29 +1,39 @@
 <template>
   <div id="app">
-    <Button :loading="loading1"
-            @click="loading1 = !loading1">
-      按钮
-    </Button>
-    <Button :loading="loading2" icon="setting"
-            @click="loading2 = !loading2">
-      按钮
-    </Button>
-    <Button :loading="loading3" icon="setting" icon-position="right"
-            @click="loading3 = !loading3">
-      按钮
-    </Button>
-    <ButtonGroup>
-      <Button icon="left">
-        上一页
+    <div class="box">
+      <Input value="张三" disabled/>
+      <Input value="李四" readonly/>
+      <Input value="王五"/>
+    </div>
+    <div class="box">
+      <Input value="王五" error="姓名不能少于两个字"/>
+    </div>
+
+    <div class="box">
+      <Button :loading="loading1"
+              @click="loading1 = !loading1">
+        按钮
       </Button>
-      <Button>
-        更多
+      <Button :loading="loading2" icon="setting"
+              @click="loading2 = !loading2">
+        按钮
       </Button>
-      <Button icon="right" icon-position="right">
-        下一页
+      <Button :loading="loading3" icon="setting" icon-position="right"
+              @click="loading3 = !loading3">
+        按钮
       </Button>
-    </ButtonGroup>
-    <div id="test"></div>
+      <ButtonGroup>
+        <Button icon="left">
+          上一页
+        </Button>
+        <Button>
+          更多
+        </Button>
+        <Button icon="right" icon-position="right">
+          下一页
+        </Button>
+      </ButtonGroup>
+    </div>
   </div>
 </template>
 
@@ -32,9 +42,11 @@
   import Button from '@/components/Button.vue';
   import Icon from '@/components/Icon.vue';
   import ButtonGroup from '@/components/Button-group.vue';
+  import Input from '@/components/Input.vue';
 
   @Component({
     components: {
+      Input,
       ButtonGroup,
       Icon,
       Button
@@ -49,6 +61,10 @@
 
 <style lang="scss">
   #app {
+    margin: 20px;
+  }
+
+  .box{
     margin: 20px;
   }
 

@@ -1,9 +1,26 @@
 <template>
   <div id="app">
+    <Row>
+      <Col span="2">1</Col>
+      <Col span="22">2</Col>
+    </Row>
+
+    <Row>
+      <Col span="4">1</Col>
+      <Col span="20">2</Col>
+    </Row>
+
+    <Row>
+      <Col>1</Col>
+      <Col>2</Col>
+      <Col>3</Col>
+    </Row>
+
+    <hr>
     <div class="box">
       <Input value="张三" disabled/>
       <Input value="李四" readonly/>
-      <Input v-model="data"/>
+      <Input v-model="inputValue"/>
     </div>
     <div class="box">
       <Input value="王五" @change="inputChange"/>
@@ -46,9 +63,13 @@
   import Icon from '@/components/Icon.vue';
   import ButtonGroup from '@/components/Button-group.vue';
   import Input from '@/components/Input.vue';
+  import Row from '@/components/Row.vue';
+  import Col from '@/components/Col.vue';
 
   @Component({
     components: {
+      Col,
+      Row,
       Input,
       ButtonGroup,
       Icon,
@@ -56,12 +77,13 @@
     },
   })
   export default class App extends Vue {
-    data = '带'
+    inputValue = '带';
     loading1 = false;
     loading2 = true;
     loading3 = false;
-    inputChange(e){
-      console.log(e.target.value);
+
+    inputChange(e: InputEvent) {
+      console.log((e.target as HTMLInputElement).value);
     }
   }
 </script>

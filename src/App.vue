@@ -3,7 +3,10 @@
     <div class="box">
       <Input value="张三" disabled/>
       <Input value="李四" readonly/>
-      <Input value="王五"/>
+      <Input v-model="data"/>
+    </div>
+    <div class="box">
+      <Input value="王五" @change="inputChange"/>
     </div>
     <div class="box">
       <Input value="王五" error="姓名不能少于两个字"/>
@@ -53,9 +56,13 @@
     },
   })
   export default class App extends Vue {
+    data = '带'
     loading1 = false;
     loading2 = true;
     loading3 = false;
+    inputChange(e){
+      console.log(e.target.value);
+    }
   }
 </script>
 
@@ -64,7 +71,7 @@
     margin: 20px;
   }
 
-  .box{
+  .box {
     margin: 20px;
   }
 

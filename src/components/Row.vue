@@ -1,21 +1,28 @@
 <template>
-  <div class="row">
+  <div class="row" :style="{marginLeft: -gutter / 2+'px',marginRight: -gutter / 2+'px'}">
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
+  import {Component, Prop} from 'vue-property-decorator';
 
   @Component
   export default class Row extends Vue {
+    @Prop() gutter?: number | string;
 
+    mounted() {
+      console.log(this.$children);
+      this.$children.forEach((vm) => {
+        vm.gutter = this.gutter;
+      });
+    }
   }
 </script>
 
 <style lang="scss" scoped>
-  .row{
+  .row {
     display: flex;
   }
 </style>

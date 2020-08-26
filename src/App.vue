@@ -1,20 +1,23 @@
 <template>
   <div id="app">
-    <Row>
-      <Col span="2">1</Col>
-      <Col span="22">2</Col>
-    </Row>
+    <div style="border: 1px solid black;">
+      <Row gutter="20">
+        <Col />
+        <Col />
+      </Row>
 
-    <Row>
-      <Col span="4">1</Col>
-      <Col span="20">2</Col>
-    </Row>
+      <Row gutter="20">
+        <Col span="4" />
+        <Col span="20" />
+      </Row>
 
-    <Row>
-      <Col>1</Col>
-      <Col>2</Col>
-      <Col>3</Col>
-    </Row>
+      <Row gutter="25">
+        <Col />
+        <Col />
+        <Col />
+      </Row>
+    </div>
+
 
     <hr>
     <div class="box">

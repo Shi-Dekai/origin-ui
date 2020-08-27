@@ -29,7 +29,6 @@
   export default class Col extends Vue {
     @Prop(String) readonly span?: string | number;
     @Prop(String) readonly offset?: string | number;
-    @Prop({type: Object, validator}) phone?: Phone;
     @Prop({type: Object, validator}) ipad?: Phone;
     @Prop({type: Object, validator}) narrowPc?: Phone;
     @Prop({type: Object, validator}) pc?: Phone;
@@ -37,9 +36,8 @@
     gutter = 0;
 
     get colClass() {
-      const {span, offset, phone, ipad, narrowPc, pc, widePc} = this;
+      const {span, offset, ipad, narrowPc, pc, widePc} = this;
       const phoneClass: string[] = [];
-      if (phone) {phoneClass.push(`col-phone-${phone.span}`);}
       if (ipad) {phoneClass.push(`col-ipad-${ipad.span}`);}
       if (narrowPc) {phoneClass.push(`col-narrowPc-${narrowPc.span}`);}
       if (pc) {phoneClass.push(`col-pc-${pc.span}`);}
@@ -74,19 +72,6 @@
     @for $n from 1 through 24 {
       &.offset-#{$n} {
         margin-left: ($n / 24) * 100%;
-      }
-    }
-    @media (max-width: 576px) {
-      @for $n from 1 through 24 {
-        &.col-phone-#{$n} {
-          width: ($n / 24) * 100%;
-        }
-      }
-
-      @for $n from 1 through 24 {
-        &.offset-phone-#{$n} {
-          margin-left: ($n / 24) * 100%;
-        }
       }
     }
     @media (min-width: 577px) and (max-width: 768px) {

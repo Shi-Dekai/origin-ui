@@ -19,7 +19,6 @@
     }) align?: string;
 
     mounted() {
-      console.log(this.$children);
       this.$children.forEach((vm) => {
         vm.gutter = this.gutter;
       });
@@ -43,7 +42,7 @@
 <style lang="scss" scoped>
   .row {
     display: flex;
-
+    flex-wrap: wrap;
     &.align-left {
       justify-content: flex-start;
     }

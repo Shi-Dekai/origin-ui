@@ -68,13 +68,12 @@
         width: ($n / 24) * 100%;
       }
     }
-
     @for $n from 1 through 24 {
       &.offset-#{$n} {
         margin-left: ($n / 24) * 100%;
       }
     }
-    @media (min-width: 577px) and (max-width: 768px) {
+    @media (min-width: 577px) {
       @for $n from 1 through 24 {
         &.col-ipad-#{$n} {
           width: ($n / 24) * 100%;
@@ -87,20 +86,20 @@
         }
       }
     }
-    @media (min-width: 769px) and (max-width: 992px) {
+    @media (min-width: 769px) {
       @for $n from 1 through 24 {
-        &.col-narrow-pc-#{$n} {
+        &.col-narrowPc-#{$n} {
           width: ($n / 24) * 100%;
         }
       }
 
       @for $n from 1 through 24 {
-        &.offset-narrow-pc-#{$n} {
+        &.offset-narrowPc-#{$n} {
           margin-left: ($n / 24) * 100%;
         }
       }
     }
-    @media (min-width: 993px) and (max-width: 1200px) {
+    @media (min-width: 993px) {
       @for $n from 1 through 24 {
         &.col-pc-#{$n} {
           width: ($n / 24) * 100%;
@@ -119,7 +118,6 @@
           width: ($n / 24) * 100%;
         }
       }
-
       @for $n from 1 through 24 {
         &.offset-pc-#{$n} {
           margin-left: ($n / 24) * 100%;

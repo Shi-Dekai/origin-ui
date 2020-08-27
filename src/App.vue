@@ -1,30 +1,13 @@
 <template>
   <div id="app">
     <div style="border: 1px solid black;">
-      <Row gutter="20">
-        <Col/>
-        <Col/>
-      </Row>
-
-      <Row gutter="20">
-        <Col span="22"
-             :ipad="{span:8}"
-             :narrow-pc="{span:4}"
-             :pc="{span:2}"
-             :wide-pc="{span:1}"
-        />
-        <Col span="22"
-             :ipad="{span:16}"
-             :narrow-pc="{span:20}"
-             :pc="{span:22}"
-             :wide-pc="{span:23}"
-        />
-      </Row>
-
-      <Row gutter="25">
-        <Col/>
-        <Col/>
-        <Col/>
+      <Row>
+        <Col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:4}"/>
+        <Col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:4}"/>
+        <Col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:4}"/>
+        <Col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:4}"/>
+        <Col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:4}"/>
+        <Col span="24" :ipad="{span:12}" :narrow-pc="{span:8}" :pc="{span:4}"/>
       </Row>
     </div>
 

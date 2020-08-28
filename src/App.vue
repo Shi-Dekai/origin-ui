@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button @click="showToast">弹出信息</button>
+    <button >弹出信息</button>
   </div>
 </template>
 
@@ -39,9 +39,13 @@
     },
   })
   export default class App extends Vue {
-    showToast(){
+    created() {
       Vue.prototype.$toast('我是 message');
+
     }
+
+    // showToast() {
+    // }
   }
 </script>
 

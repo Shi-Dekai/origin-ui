@@ -1,14 +1,6 @@
 <template>
   <div id="app">
-    <Layout style="min-height: 100vh">
-      <Sider class="demo">sider</Sider>
-      <Layout>
-        <Header class="demo">header</Header>
-        <Content class="demo">content</Content>
-        <Footer class="demo">footer</Footer>
-      </Layout>
-    </Layout>
-
+    <button @click="showToast">弹出信息</button>
   </div>
 </template>
 
@@ -25,9 +17,14 @@
   import Content from '@/components/Content.vue';
   import Footer from '@/components/Footer.vue';
   import Sider from '@/components/Sider.vue';
+  import Toast from '@/components/Toast.vue';
+  import plugin from '@/plugin';
+
+  Vue.use(plugin);
 
   @Component({
     components: {
+      Toast,
       Sider,
       Footer,
       Content,
@@ -42,22 +39,27 @@
     },
   })
   export default class App extends Vue {
-    inputValue = '带';
-    loading1 = false;
-    loading2 = true;
-    loading3 = false;
-
-    inputChange(e: InputEvent) {
-      console.log((e.target as HTMLInputElement).value);
+    showToast(){
+      Vue.prototype.$toast('我是 message');
     }
   }
 </script>
 
 <style lang="scss">
   #app {
-    .demo{
-      border: 1px solid #666;
-      min-height: 100px;
+    .sider {
+      background: #333;
+      width: 200px;
+    }
+
+    .header {
+      background: #999;
+      height: 100px;
+    }
+
+    .footer {
+      background: #ccc;
+      height: 50px;
     }
   }
 

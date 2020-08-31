@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <button @click="showToast">弹出信息</button>
+    <button @click="showToast1">top</button>
+    <button @click="showToast2">middle</button>
+    <button @click="showToast3">bottom</button>
+
   </div>
 </template>
 
@@ -40,7 +43,17 @@
   })
   export default class App extends Vue {
 
-    showToast() {
+    showToast1(){
+      this.showToast('top')
+    }
+    showToast2(){
+      this.showToast('middle')
+    }
+    showToast3(){
+      this.showToast('bottom')
+    }
+
+    showToast(position: string) {
       Vue.prototype.$toast('<strong>智商已欠费</strong>', {
         closeButton: {
           text: '已充值',
@@ -48,7 +61,7 @@
             console.log('用户说他知道了');
           },
         },
-        position: 'middle',
+        position,
         autoClose: false,
         enableHtml: true,
         autoCloseDelay: 6,

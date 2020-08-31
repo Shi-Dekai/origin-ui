@@ -41,14 +41,17 @@
   export default class App extends Vue {
 
     showToast() {
-      Vue.prototype.$toast('<button>我是 message</button>', {
+      Vue.prototype.$toast('<strong>智商已欠费</strong>', {
         closeButton: {
-          text: '知道了',
+          text: '已充值',
           callBack() {
             console.log('用户说他知道了');
           },
         },
-        enableHtml: false
+        position: 'middle',
+        autoClose: false,
+        enableHtml: true,
+        autoCloseDelay: 6,
       });
     }
   }

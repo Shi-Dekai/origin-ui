@@ -1,5 +1,5 @@
 <template>
-  <div class="toast">
+  <div class="toast" :class="toastClasses">
     <slot v-if="!enableHtml"></slot>
     <div v-else v-html="$slots.default[0]"></div>
     <div class="line"></div>
@@ -17,8 +17,10 @@
   }
   @Component
   export default class Toast extends Vue {
-    @Prop(Boolean) autoClose = true;
-    @Prop(Number) autoCloseDelay = 500;
+    @Prop({type: Boolean, default: true}) autoClose?: boolean;
+    @Prop({type: Number, default: 2}) autoCloseDelay!: number;
+    @Prop(Boolean) enableHtml?: boolean;
+
     @Prop({
       default: () => {
         return {
@@ -27,7 +29,16 @@
         };
       }
     }) closeButton?: closeButton;
-    @Prop(Boolean) enableHtml?: boolean;
+
+    @Prop({
+      type: String, default: 'top', validator(value: string): boolean {
+        return ['top', 'bottom', 'middle'].indexOf(value) >= 0;
+      }
+    }) position?: string;
+
+    get toastClasses() {
+      return {[`position-${this.position}`]: true};
+    }
 
     mounted() {
       if (this.autoClose) {
@@ -45,7 +56,7 @@
     onClickClose() {
       this.close();
       if (this.closeButton && typeof this.closeButton.callBack === 'function') {
-        console.log('执行了closeButton.callBack');
+        this.closeButton.callBack();
       }
     }
   }
@@ -59,7 +70,6 @@
     display: flex;
     align-items: center;
     position: fixed;
-    top: 0;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, .75);
@@ -71,14 +81,27 @@
     .line {
       border-left: 1px solid #666;
       height: 100%;
-      margin-left: 16px;
       position: absolute;
-      right: 70px;
+      right: 73px;
     }
 
     .close {
       padding-left: 16px;
+      margin-left: 16px;
       flex-shrink: 0;
+    }
+
+    &.position-top {
+      top: 0;
+    }
+
+    &.position-bottom {
+      bottom: 0;
+    }
+
+    &.position-middle {
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 </style>

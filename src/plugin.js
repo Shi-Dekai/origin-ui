@@ -2,19 +2,14 @@ import Toast from '@/components/Toast.vue'
 
 export default {
   install(Vue, options) {
-    Vue.prototype.$toast = function (message) {
+    Vue.prototype.$toast = function (message, toastOptions) {
       const Constructor = Vue.extend(Toast)
       const toast = new Constructor({
-        propsData: {
-          text: '知道了',
-          callback() {
-            console.log('用户说他知道了')
-          }
-        }
+        propsData: toastOptions
       })
       toast.$slots.default = [message]
       toast.$mount()
-        document.body.appendChild(toast.$el)
+      document.body.appendChild(toast.$el)
     }
   }
 }

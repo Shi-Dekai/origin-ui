@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button >弹出信息</button>
+    <button @click="showToast">弹出信息</button>
   </div>
 </template>
 
@@ -18,7 +18,7 @@
   import Footer from '@/components/Footer.vue';
   import Sider from '@/components/Sider.vue';
   import Toast from '@/components/Toast.vue';
-  import plugin from '@/plugin';
+  import plugin from '@/plugin.js';
 
   Vue.use(plugin);
 
@@ -39,13 +39,18 @@
     },
   })
   export default class App extends Vue {
-    created() {
-      Vue.prototype.$toast('我是 message');
 
+    showToast() {
+      Vue.prototype.$toast('<button>我是 message</button>', {
+        closeButton: {
+          text: '知道了',
+          callBack() {
+            console.log('用户说他知道了');
+          },
+        },
+        enableHtml: false
+      });
     }
-
-    // showToast() {
-    // }
   }
 </script>
 

@@ -19,7 +19,12 @@
   }
   @Component
   export default class Toast extends Vue {
-    @Prop({type: Boolean, default: true}) autoClose?: boolean;
+    @Prop({
+      type: [Boolean, Number], default: 5,
+      validator(value: boolean | number): boolean {
+        return value === false || typeof value === 'number';
+      }
+    }) autoClose?: boolean;
     @Prop({type: Number, default: 2}) autoCloseDelay!: number;
     @Prop(Boolean) enableHtml?: boolean;
 
@@ -46,7 +51,7 @@
       if (this.autoClose) {
         setTimeout(() => {
           this.close();
-        }, this.autoCloseDelay * 1000);
+        }, this.autoClose * 1000);
       }
     }
 

@@ -62,9 +62,8 @@
           },
         },
         position,
-        autoClose: false,
+        autoClose: 1,
         enableHtml: true,
-        autoCloseDelay: 6,
       });
     }
   }

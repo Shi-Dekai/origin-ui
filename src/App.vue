@@ -1,9 +1,20 @@
 <template>
   <div id="app">
-    <button @click="showToast1">top</button>
-    <button @click="showToast2">middle</button>
-    <button @click="showToast3">bottom</button>
-
+    <Tabs :selected.sync="selectedTab" >
+      <TabsHead>
+        <template slot="actions">
+          <button>按钮</button>
+        </template>
+        <TabsItem name="woman" >美女</TabsItem>
+        <TabsItem name="finance">财经</TabsItem>
+        <TabsItem name="sports">体育</TabsItem>
+      </TabsHead>
+      <TabsBody>
+        <TabsPane name="woman">美女相关资讯</TabsPane>
+        <TabsPane name="finance">财经相关资讯</TabsPane>
+        <TabsPane name="sports">体育相关资讯</TabsPane>
+      </TabsBody>
+    </Tabs>
   </div>
 </template>
 
@@ -22,11 +33,21 @@
   import Sider from '@/components/Sider.vue';
   import Toast from '@/components/Toast.vue';
   import plugin from '@/plugin.js';
+  import Tabs from '@/components/Tabs.vue';
+  import TabsHead from '@/components/TabsHead.vue';
+  import TabsBody from '@/components/TabsBody.vue';
+  import TabsItem from '@/components/TabsItem.vue';
+  import TabsPane from '@/components/TabsPane.vue';
 
   Vue.use(plugin);
 
   @Component({
     components: {
+      TabsPane,
+      TabsBody,
+      TabsItem,
+      TabsHead,
+      Tabs,
       Toast,
       Sider,
       Footer,
@@ -43,29 +64,6 @@
   })
   export default class App extends Vue {
 
-    showToast1(){
-      this.showToast('top')
-    }
-    showToast2(){
-      this.showToast('middle')
-    }
-    showToast3(){
-      this.showToast('bottom')
-    }
-
-    showToast(position: string) {
-      Vue.prototype.$toast('<strong>智商已欠费</strong>', {
-        closeButton: {
-          text: '已充值',
-          callBack() {
-            console.log('用户说他知道了');
-          },
-        },
-        position,
-        autoClose: 1,
-        enableHtml: true,
-      });
-    }
   }
 </script>
 

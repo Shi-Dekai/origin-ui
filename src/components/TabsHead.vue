@@ -17,13 +17,22 @@
   export default class TabsHead extends Vue {
     @Inject() eventBus!: Vue;
 
+    mounted() {
+      this.eventBus.$on('update:selected', (item: string, vm: Vue) => {
+        const {width, height, left, top} = vm.$el.getBoundingClientRect();
+        console.log(width, height, left, top);
+        this.$refs.line.style.width = `${width}px`;
+        this.$refs.line.style.height = `${height}px`;
+        this.$refs.line.style.left = `${left}px`;
+        this.$refs.line.style.top = `${top}px`;
+      });
+    }
 
   }
 </script>
 
 <style lang="scss" scoped>
   .tabs-head {
-    border: 1px solid red;
     display: flex;
     height: 40px;
     justify-content: start;
@@ -33,8 +42,8 @@
     > .line {
       position: absolute;
       bottom: 0;
-      border: 1px solid blue;
-      width: 100px;
+      border-bottom: 1px solid blue;
+      transition: all 300ms;
     }
 
     > .actions-wrapper {

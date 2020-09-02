@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="xxx" :class="classes">
+  <div class="tabs-item" @click="onClick" :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,7 @@
   @Component
   export default class TabsItem extends Vue {
     active = false;
-    @Prop(Boolean) disabled = false;
+    @Prop({type: Boolean}) disabled!: boolean;
     @Prop({type: String || Number, required: true}) name!: string | number;
     @Inject() eventBus!: Vue;
 
@@ -22,10 +22,14 @@
     }
 
     get classes() {
-      return {active: this.active};
+      return {
+        active: this.active,
+        disabled: this.disabled
+      };
     }
 
-    xxx() {
+    onClick() {
+      if (this.disabled) {return;}
       this.eventBus.$emit('update:selected', this.name, this);
     }
   }
@@ -39,9 +43,15 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+
     &.active {
       color: blue;
       font-weight: bold;
+    }
+
+    &.disabled {
+      color: grey;
+      cursor: not-allowed;
     }
   }
 </style>

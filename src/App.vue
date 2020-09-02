@@ -5,7 +5,7 @@
         <template slot="actions">
           <button>按钮</button>
         </template>
-        <TabsItem name="woman">
+        <TabsItem name="woman" disabled>
           <Icon name="setting"></Icon>
           美女
         </TabsItem>

@@ -24,7 +24,6 @@
         if (vm.$options.name === 'TabsHead') {
           vm.$children.forEach((vm2) => {
             if (vm2.$options.name === 'TabsItem' && vm2.$props.name === this.selected) {
-              console.log(vm2.$el);
               this.eventBus.$emit('update:selected', this.selected, vm2);
             }
           });

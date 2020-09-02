@@ -1,23 +1,19 @@
 <template>
   <div id="app">
-    <Tabs :selected.sync="selectedTab">
-      <TabsHead>
-        <template slot="actions">
-          <button>按钮</button>
+    <div style="padding: 100px">
+      <Popover>
+        <template slot="content">
+          <div>popover内容</div>
         </template>
-        <TabsItem name="woman" disabled>
-          <Icon name="setting"></Icon>
-          美女
-        </TabsItem>
-        <TabsItem name="finance">财经</TabsItem>
-        <TabsItem name="sports">体育</TabsItem>
-      </TabsHead>
-      <TabsBody>
-        <TabsPane name="woman">美女相关资讯</TabsPane>
-        <TabsPane name="finance">财经相关资讯</TabsPane>
-        <TabsPane name="sports">体育相关资讯</TabsPane>
-      </TabsBody>
-    </Tabs>
+        <button>点我</button>
+      </Popover>
+      <Popover>
+        <template slot="content">
+          <div>popover内容</div>
+        </template>
+        <button>点我</button>
+      </Popover>
+    </div>
   </div>
 </template>
 
@@ -41,11 +37,13 @@
   import TabsBody from '@/components/TabsBody.vue';
   import TabsItem from '@/components/TabsItem.vue';
   import TabsPane from '@/components/TabsPane.vue';
+  import Popover from '@/components/Popover.vue';
 
   Vue.use(plugin);
 
   @Component({
     components: {
+      Popover,
       TabsPane,
       TabsBody,
       TabsItem,
@@ -66,7 +64,6 @@
     },
   })
   export default class App extends Vue {
-    selectedTab = 'sports';
   }
 </script>
 

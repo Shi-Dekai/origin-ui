@@ -26,7 +26,7 @@
     }
 
     xxx() {
-      this.eventBus.$emit('update:selected', this.name);
+      this.eventBus.$emit('update:selected', this.name, this);
     }
   }
 </script>
@@ -40,7 +40,8 @@
     align-items: center;
     cursor: pointer;
     &.active {
-      background: red;
+      color: blue;
+      font-weight: bold;
     }
   }
 </style>

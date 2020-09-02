@@ -1,9 +1,11 @@
 <template>
   <div class="tabs-head">
     <slot></slot>
+    <div class="line" ref="line"></div>
     <div class="actions-wrapper">
       <slot name="actions"></slot>
     </div>
+
   </div>
 </template>
 
@@ -12,7 +14,7 @@
   import {Component, Inject} from 'vue-property-decorator';
 
   @Component
-  export default class TabsHeader extends Vue {
+  export default class TabsHead extends Vue {
     @Inject() eventBus!: Vue;
 
 
@@ -26,6 +28,14 @@
     height: 40px;
     justify-content: start;
     align-items: center;
+    position: relative;
+
+    > .line {
+      position: absolute;
+      bottom: 0;
+      border: 1px solid blue;
+      width: 100px;
+    }
 
     > .actions-wrapper {
       margin-left: auto;

@@ -38,6 +38,7 @@
     justify-content: start;
     align-items: center;
     position: relative;
+    border-bottom: 1px solid #666;
 
     > .line {
       position: absolute;

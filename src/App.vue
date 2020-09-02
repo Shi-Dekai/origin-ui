@@ -1,11 +1,14 @@
 <template>
   <div id="app">
-    <Tabs :selected.sync="selectedTab" >
+    <Tabs :selected.sync="selectedTab">
       <TabsHead>
         <template slot="actions">
           <button>按钮</button>
         </template>
-        <TabsItem name="woman" >美女</TabsItem>
+        <TabsItem name="woman">
+          <Icon name="setting"></Icon>
+          美女
+        </TabsItem>
         <TabsItem name="finance">财经</TabsItem>
         <TabsItem name="sports">体育</TabsItem>
       </TabsHead>
@@ -63,7 +66,7 @@
     },
   })
   export default class App extends Vue {
-
+    selectedTab = 'sports';
   }
 </script>
 

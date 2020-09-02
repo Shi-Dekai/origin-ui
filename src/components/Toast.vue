@@ -24,7 +24,7 @@
       validator(value: boolean | number): boolean {
         return value === false || typeof value === 'number';
       }
-    }) autoClose?: boolean;
+    }) autoClose?: boolean | number;
     @Prop({type: Number, default: 2}) autoCloseDelay!: number;
     @Prop(Boolean) enableHtml?: boolean;
 
@@ -51,7 +51,7 @@
       if (this.autoClose) {
         setTimeout(() => {
           this.close();
-        }, this.autoClose * 1000);
+        }, (this.autoClose as number) * 1000);
       }
     }
 

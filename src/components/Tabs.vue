@@ -6,21 +6,21 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component, Prop} from 'vue-property-decorator';
+  import {Component, Prop, Provide} from 'vue-property-decorator';
 
   @Component
   export default class Tabs extends Vue {
-    @Prop({type: String}) selected?: string;
-
+    @Prop({type: String, required: true}) selected!: string;
     @Prop({
       type: String,
       validator(value: string): boolean {
         return ['horizontal', 'vertical'].indexOf(value) >= 0;
       }
     }) direction?: string;
+    @Provide() eventBus = new Vue();
 
-    created() {
-      // this.$emit('update:selected', 'xxx');
+    mounted() {
+      this.eventBus.$emit('update:selected', this.selected);
     }
   }
 </script>

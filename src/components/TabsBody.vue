@@ -6,10 +6,11 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
+  import {Component, Inject} from 'vue-property-decorator';
 
   @Component
   export default class TabsBody extends Vue {
+    @Inject() eventBus!: Vue;
 
   }
 </script>

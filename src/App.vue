@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <div style="padding: 100px">
-      <Popover>
-        <template slot="content">
-          <div>popover内容</div>
-        </template>
-        <button>点我</button>
-      </Popover>
-      <Popover>
-        <template slot="content">
-          <div>popover内容</div>
-        </template>
-        <button>点我</button>
-      </Popover>
+      <div style="width: 500px; height: 40px; border: 1px solid green; padding-top: 10px">
+        <Popover>
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <button>点我</button>
+        </Popover>
+        <Popover>
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <button>点我</button>
+        </Popover>
+      </div>
     </div>
   </div>
 </template>

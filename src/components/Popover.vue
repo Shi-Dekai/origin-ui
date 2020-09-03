@@ -1,6 +1,7 @@
 <template>
   <div class="popover" @click="onClick" ref="popover">
-    <div ref="contentWrapper" class="content-wrapper" v-if="visible">
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible"
+         :class="{[`position-${position}`]:true}">
       <slot name="content"></slot>
     </div>
     <span class="triggerWrapper" ref="triggerWrapper">
@@ -11,17 +12,34 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
+  import {Component, Prop} from 'vue-property-decorator';
 
   @Component
   export default class Popover extends Vue {
     visible = false;
+    @Prop({
+      type: String,
+      default: 'top',
+      validator(value: string): boolean {
+        return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0;
+      }
+    }) position!: string;
 
     positionContent() {
-      document.body.appendChild(this.$refs.contentWrapper);
-      const {left, top} = this.$refs.triggerWrapper.getBoundingClientRect();
-      this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
-      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+      const {contentWrapper, triggerWrapper} = this.$refs;
+      document.body.appendChild(contentWrapper);
+      const {left, top, height, width} = triggerWrapper.getBoundingClientRect();
+      const {height: height2} = contentWrapper.getBoundingClientRect();
+
+      const positions = {
+        top: {left: left + window.scrollX, top: top + window.scrollY},
+        bottom: {left: left + window.scrollX, top: top + height + window.scrollY},
+        left: {left: left + window.scrollX, top: top + window.scrollY + (height - height2) / 2},
+        right: {left: left + width + window.scrollX, top: top + window.scrollY + (height - height2) / 2},
+      };
+
+      contentWrapper.style.left = positions[this.position].left + 'px';
+      contentWrapper.style.top = positions[this.position].top + 'px';
     }
 
     onClickDocument(e: object) {
@@ -75,13 +93,11 @@
     position: absolute;
     filter: drop-shadow(0 0 1px rgba(0, 0, 0, .5));
     background: white;
-    transform: translateY(-100%);
-    margin-top: -10px;
     border: 1px solid #333;
     border-radius: 4px;
     padding: .5em 1em;
     max-width: 20em;
-    flex-wrap: wrap;
+    word-break: break-all;
 
     &::before, &::after {
       content: '';
@@ -90,17 +106,83 @@
       width: 0;
       height: 0;
       position: absolute;
-      left: 10%;
     }
 
-    &::before {
-      border-top-color: black;
-      top: 100%;
+    &.position-top {
+      transform: translateY(-100%);
+      margin-top: -10px;
+
+      &::before, &::after {
+        left: 10%;
+      }
+
+      &::before {
+        border-top-color: black;
+        top: 100%;
+      }
+
+      &::after {
+        border-top-color: white;
+        top: calc(100% - 1px);
+      }
     }
 
-    &::after {
-      border-top-color: white;
-      top: calc(100% - 1px);
+    &.position-bottom {
+      margin-top: 10px;
+
+      &::before, &::after {
+      }
+
+      &::before {
+        border-bottom-color: black;
+        bottom: 100%;
+      }
+
+      &::after {
+        border-bottom-color: white;
+        bottom: calc(100% - 1px);
+      }
     }
+
+    &.position-left {
+      transform: translateX(-100%);
+      margin-left: -10px;
+
+      &::before, &::after {
+        transform: translateY(-50%);
+        left: 100%;
+        top: 50%;
+      }
+
+      &::before {
+        border-left-color: black;
+        left: 100%;
+      }
+
+      &::after {
+        border-left-color: white;
+        left: calc(100% - 1px);
+      }
+    }
+
+    &.position-right {
+      margin-left: 10px;
+
+      &::before, &::after {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        border-right-color: black;
+        right: 100%;
+      }
+
+      &::after {
+        border-right-color: white;
+        right: calc(100% - 1px);
+      }
+    }
+
   }
 </style>

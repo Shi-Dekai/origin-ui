@@ -4,15 +4,15 @@
       <div style="width: 500px; height: 40px; border: 1px solid green; padding-top: 10px">
         <Popover>
           <template slot="content">
-            <div>popover内容</div>
+            <div>popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容</div>
           </template>
-          <button>点我</button>
+          <Button>点我</Button>
         </Popover>
         <Popover>
           <template slot="content">
             <div>popover内容</div>
           </template>
-          <button>点我</button>
+          <Button>点我</Button>
         </Popover>
       </div>
     </div>

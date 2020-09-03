@@ -1,9 +1,11 @@
 <template>
   <div class="popover" @click.stop="xxx">
-    <div class="content-wrapper" v-if="visible" @click.stop>
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible" @click.stop>
       <slot name="content"></slot>
     </div>
-    <slot></slot>
+    <span class="triggerWrapper" ref="triggerWrapper">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
@@ -13,12 +15,18 @@
 
   @Component
   export default class Popover extends Vue {
-    visible = false;
+    visible = true;
 
     xxx() {
       this.visible = !this.visible;
       if (this.visible) {
         this.$nextTick(() => {
+          document.body.appendChild(this.$refs.contentWrapper);
+
+          const {width, height, left, top} = this.$refs.triggerWrapper.getBoundingClientRect();
+          console.log(width, height, left, top);
+          this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
+          this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
           const eventHandler = () => {
             this.visible = false;
             console.log('隐藏弹出框');
@@ -38,13 +46,11 @@
     display: inline-block;
     vertical-align: top;
     position: relative;
+  }
 
-    > .content-wrapper {
-      border: 1px solid red;
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      box-shadow: 0 0 3px rgba(0, 0, 0, .5);
-    }
+  .content-wrapper {
+    position: absolute;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    transform: translateY(-100%);
   }
 </style>

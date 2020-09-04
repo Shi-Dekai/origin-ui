@@ -1,57 +1,11 @@
 <template>
   <div id="app">
     <div style="padding: 100px">
-        <Popover>
-          <template slot="content">
-            <div>popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容</div>
-          </template>
-          <Button>点我</Button>
-        </Popover>
-        <Popover position="bottom">
-          <template slot="content" slot-scope="{close}">
-            <div>popover内容<Button @click="close">关闭</Button></div>
-          </template>
-          <Button>点我</Button>
-        </Popover>
-        <Popover position="left">
-          <template slot="content">
-            <div>popover内容</div>
-          </template>
-          <Button>点我</Button>
-        </Popover>
-        <Popover position="right">
-          <template slot="content">
-            <div>popover内容</div>
-          </template>
-          <Button>点我</Button>
-        </Popover>
-      </div>
-    <div style="padding-left: 100px;">
-      <Popover trigger="hover">
-        <template slot="content">
-          <div>popover内容popover内容popover内容popover内容
-            </div>
-        </template>
-        <Button>点我</Button>
-      </Popover>
-      <Popover position="bottom"  trigger="hover">
-        <template slot="content">
-          <div>popover内容</div>
-        </template>
-        <Button>点我</Button>
-      </Popover>
-      <Popover position="left"  trigger="hover">
-        <template slot="content">
-          <div>popover内容</div>
-        </template>
-        <Button>点我</Button>
-      </Popover>
-      <Popover position="right"  trigger="hover">
-        <template slot="content">
-          <div>popover内容</div>
-        </template>
-        <Button>点我</Button>
-      </Popover>
+      <Collapse>
+        <CollapseItem title="标题1">内容1</CollapseItem>
+        <CollapseItem title="标题2">内容2</CollapseItem>
+        <CollapseItem title="标题3">内容3</CollapseItem>
+      </Collapse>
     </div>
   </div>
 </template>
@@ -77,11 +31,15 @@
   import TabsItem from '@/components/TabsItem.vue';
   import TabsPane from '@/components/TabsPane.vue';
   import Popover from '@/components/Popover.vue';
+  import Collapse from '@/components/Collapse.vue';
+  import CollapseItem from '@/components/CollapseItem.vue';
 
   Vue.use(plugin);
 
   @Component({
     components: {
+      CollapseItem,
+      Collapse,
       Popover,
       TabsPane,
       TabsBody,

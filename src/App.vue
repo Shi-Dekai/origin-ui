@@ -8,8 +8,8 @@
           <Button>点我</Button>
         </Popover>
         <Popover position="bottom">
-          <template slot="content">
-            <div>popover内容</div>
+          <template slot="content" slot-scope="{close}">
+            <div>popover内容<Button @click="close">关闭</Button></div>
           </template>
           <Button>点我</Button>
         </Popover>
@@ -29,7 +29,8 @@
     <div style="padding-left: 100px;">
       <Popover trigger="hover">
         <template slot="content">
-          <div>popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容</div>
+          <div>popover内容popover内容popover内容popover内容
+            </div>
         </template>
         <Button>点我</Button>
       </Popover>

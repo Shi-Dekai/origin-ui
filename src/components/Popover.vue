@@ -2,7 +2,7 @@
   <div class="popover" ref="popover">
     <div ref="contentWrapper" class="content-wrapper" v-if="visible"
          :class="{[`position-${position}`]:true}">
-      <slot name="content"></slot>
+      <slot name="content" :close="close"></slot>
     </div>
     <span class="triggerWrapper" ref="triggerWrapper">
       <slot></slot>
@@ -140,6 +140,7 @@
 
       &::before, &::after {
         left: 10%;
+        border-bottom: none;
       }
 
       &::before {
@@ -157,6 +158,7 @@
       margin-top: 10px;
 
       &::before, &::after {
+        border-top: none;
       }
 
       &::before {
@@ -178,6 +180,7 @@
         transform: translateY(-50%);
         left: 100%;
         top: 50%;
+        border-right: none;
       }
 
       &::before {
@@ -197,6 +200,7 @@
       &::before, &::after {
         top: 50%;
         transform: translateY(-50%);
+        border-left: none;
       }
 
       &::before {

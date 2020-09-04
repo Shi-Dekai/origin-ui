@@ -1,6 +1,6 @@
 <template>
   <div class="collapse-item">
-    <div class="title" @click="open = !open">
+    <div class="title" @click="toggle">
       {{title}}
     </div>
     <div class="content" v-if="open">
@@ -11,12 +11,40 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component, Prop} from 'vue-property-decorator';
+  import {Component, Inject, Prop} from 'vue-property-decorator';
 
   @Component
   export default class CollapseItem extends Vue {
     open = false;
     @Prop({type: String, required: true}) title!: string;
+    @Prop(String) name?: string;
+    @Inject() eventBus!: Vue;
+
+    mounted() {
+      this.eventBus.$on('update:selected', (name: string) => {
+        if (this.name !== name) {
+          this.close();
+        } else {
+          this.show();
+        }
+      });
+    }
+
+    toggle() {
+      if (this.open) {
+        this.open = false;
+      } else {
+        this.eventBus.$emit('update:selected', this.name);
+      }
+    }
+
+    close() {
+      this.open = false;
+    }
+
+    show() {
+      this.open = true;
+    }
   }
 </script>
 
@@ -39,6 +67,13 @@
 
     &:last-child {
       > .title:last-child {
+        border-radius: 0 0 4px 4px;
+      }
+    }
+
+    &:last-child {
+      > .content:last-child {
+        border-bottom: 1px solid #ddd;
         border-radius: 0 0 4px 4px;
       }
     }

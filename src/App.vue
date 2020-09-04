@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <div style="padding: 100px">
-      <Collapse>
-        <CollapseItem title="标题1">内容1</CollapseItem>
-        <CollapseItem title="标题2">内容2</CollapseItem>
-        <CollapseItem title="标题3">内容3</CollapseItem>
+      <Collapse :selected.sync="selectedTab" single>
+        <CollapseItem title="标题1" name="1">内容1</CollapseItem>
+        <CollapseItem title="标题2" name="2">内容2</CollapseItem>
+        <CollapseItem title="标题3" name="3">内容3</CollapseItem>
       </Collapse>
+      {{selectedTab}}
     </div>
   </div>
 </template>
@@ -61,6 +62,7 @@
     },
   })
   export default class App extends Vue {
+    selectedTab = '2';
   }
 </script>
 

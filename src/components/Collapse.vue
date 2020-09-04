@@ -1,6 +1,6 @@
 <template>
   <div class="collapse">
-    <slot :single="single"></slot>
+    <slot></slot>
   </div>
 </template>
 
@@ -10,14 +10,30 @@
 
   @Component
   export default class Collapse extends Vue {
-    @Prop({type: Boolean, default: false}) single!: boolean;
     @Provide() eventBus = new Vue();
-    @Prop(String) selected?: string;
+    @Prop(Array) selected!: string[];
+    @Prop({type: Boolean, default: false}) single!: boolean;
 
     mounted() {
       this.eventBus.$emit('update:selected', this.selected);
-      this.eventBus.$on('update:selected', (name: string) => {
-        this.$emit('update:selected', name);
+      this.eventBus.$on('update:addSelected', (name: string) => {
+        let selectedCopy = JSON.parse(JSON.stringify(this.selected));
+        if (this.single) {
+          selectedCopy = [name];
+        } else {
+          selectedCopy.push(name);
+        }
+        this.selected.push(name);
+        this.eventBus.$emit('update:selected', selectedCopy);
+        this.$emit('update:selected', selectedCopy);
+      });
+      this.eventBus.$on('update:removeSelected', (name: string) => {
+        const selectedCopy = JSON.parse(JSON.stringify(this.selected));
+        const index = selectedCopy.indexOf(name);
+        selectedCopy.splice(index, 1);
+        console.log('-1');
+        this.eventBus.$emit('update:selected', selectedCopy);
+        this.$emit('update:selected', selectedCopy);
       });
     }
   }

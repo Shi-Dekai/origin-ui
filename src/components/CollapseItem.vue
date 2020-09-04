@@ -17,34 +17,24 @@
   export default class CollapseItem extends Vue {
     open = false;
     @Prop({type: String, required: true}) title!: string;
-    @Prop(String) name?: string;
+    @Prop(String) name!: string;
     @Inject() eventBus!: Vue;
 
     mounted() {
-      this.eventBus.$on('update:selected', (name: string) => {
-        if (this.name !== name) {
-          this.close();
-        } else {
-          this.show();
-        }
+      this.eventBus.$on('update:selected', (names: string[]) => {
+        this.open = names.indexOf(this.name) >= 0;
       });
     }
 
     toggle() {
       if (this.open) {
-        this.open = false;
+        this.eventBus.$emit('update:removeSelected', this.name);
       } else {
-        this.eventBus.$emit('update:selected', this.name);
+        this.eventBus.$emit('update:addSelected', this.name);
       }
     }
 
-    close() {
-      this.open = false;
-    }
 
-    show() {
-      this.open = true;
-    }
   }
 </script>
 

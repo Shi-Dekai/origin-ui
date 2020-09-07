@@ -1,6 +1,16 @@
 module.exports = {
-  title: 'originUI',
-  description: '一个好用的UI框架',
+  title: 'Hello VuePress',
+  description: 'Just playing around',
+  plugins: [
+    [
+      'vuepress-plugin-typescript',
+      {
+        tsLoaderOptions: {
+          // ts-loader 的所有配置项
+        },
+      },
+    ],
+  ],
   themeConfig: {
     sidebar: [
       {

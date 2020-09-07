@@ -1,7 +1,7 @@
 ---
 title: 按钮
 ---
-
 # 按钮
-111 我是大帅逼
-<buttonDemo></buttonDemo>
+使用方法
+
+<buttonDemos></buttonDemos>

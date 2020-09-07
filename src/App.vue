@@ -7,6 +7,7 @@
         <CollapseItem title="标题3" name="3">内容3</CollapseItem>
       </Collapse>
     </div>
+    <buttonDemos></buttonDemos>
   </div>
 </template>
 
@@ -33,11 +34,13 @@
   import Popover from '@/components/Popover.vue';
   import Collapse from '@/components/Collapse.vue';
   import CollapseItem from '@/components/CollapseItem.vue';
+  import ButtonDemos from '../docs/.vuepress/components/buttonDemos.vue';
 
   Vue.use(plugin);
 
   @Component({
     components: {
+      ButtonDemos,
       CollapseItem,
       Collapse,
       Popover,

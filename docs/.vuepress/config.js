@@ -5,13 +5,12 @@ module.exports = {
     [
       'vuepress-plugin-typescript',
       {
-        tsLoaderOptions: {
-          // ts-loader 的所有配置项
-        },
+        tsLoaderOptions: {},
       },
     ],
   ],
   themeConfig: {
+    displayAllHeaders: true,
     sidebar: [
       {
         title: '入门',

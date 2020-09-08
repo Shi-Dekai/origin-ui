@@ -19,11 +19,13 @@
 
     mounted() {
       this.eventBus.$on('update:selected', (item: string, vm: Vue) => {
-        const {width, height, left, top} = vm.$el.getBoundingClientRect();
-        this.$refs.line.style.width = `${width}px`;
-        this.$refs.line.style.height = `${height}px`;
-        this.$refs.line.style.left = `${left}px`;
-        this.$refs.line.style.top = `${top}px`;
+        const index = [...vm.$el.parentNode.querySelectorAll('.tabs-item')].indexOf(vm.$el);
+
+        Object.assign(this.$refs.line.style, {
+          width: vm.$el.offsetWidth + 'px',
+          left: index * vm.$el.offsetWidth + 'px',
+          top: vm.$el.offsetHeight - 1 + 'px'
+        });
       });
     }
 
@@ -41,9 +43,10 @@
 
     > .line {
       position: absolute;
-      bottom: 0;
-      border-bottom: 1px solid blue;
+      height: 2px;
+      background: blue;
       transition: all 300ms;
+      z-index: 99;
     }
 
     > .actions-wrapper {

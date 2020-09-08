@@ -1,8 +1,8 @@
 <template>
   <div class="col" :class="colClass"  style="height: 40px;"
        :style="colStyle">
-    <div>
-      <slot></slot>
+    <div style="height: 100%;">
+      <slot>111</slot>
     </div>
   </div>
 </template>
@@ -61,7 +61,7 @@
 
 <style lang="scss" scoped>
   .col {
-
+    box-sizing: border-box;
     @for $n from 1 through 24 {
       &.col-#{$n} {
         width: ($n / 24) * 100%;

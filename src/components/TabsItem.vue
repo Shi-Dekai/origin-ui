@@ -16,6 +16,7 @@
     @Inject() eventBus!: Vue;
 
     mounted() {
+      console.log(this.disabled);
       this.eventBus.$on('update:selected', (name: string) => {
         this.active = this.name === name;
       });

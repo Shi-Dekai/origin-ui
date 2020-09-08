@@ -1,7 +1,7 @@
 <template>
-  <div class="col" :class="colClass"
+  <div class="col" :class="colClass"  style="height: 40px;"
        :style="colStyle">
-    <div style="border: 1px solid green; height: 100px;">
+    <div>
       <slot></slot>
     </div>
   </div>
@@ -61,7 +61,6 @@
 
 <style lang="scss" scoped>
   .col {
-    height: 100px;
 
     @for $n from 1 through 24 {
       &.col-#{$n} {

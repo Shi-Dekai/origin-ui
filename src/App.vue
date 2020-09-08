@@ -1,70 +1,66 @@
 <template>
   <div id="app">
-    <div style="padding: 100px">
-      <Collapse :selected.sync="selectedTab" >
-        <CollapseItem title="标题1" name="1">内容1</CollapseItem>
-        <CollapseItem title="标题2" name="2">内容2</CollapseItem>
-        <CollapseItem title="标题3" name="3">内容3</CollapseItem>
-      </Collapse>
+    <div>
+      {{1111}}
+      <div class="position">
+        <div>弹出方向</div>
+        <Button @click="top">上方提示</Button>
+        <Button @click="middle">中间提示</Button>
+        <Button @click="bottom">下方提示</Button>
+      </div>
+      <div class="custom">
+        <div>自定义弹窗</div>
+        <Button @click="always">一直显示</Button>
+        <Button @click="oneSecond">1秒自动关闭</Button>
+        <Button @click="closeText">知道了</Button>
+        <Button @click="enableHTML">支持HTML语法</Button>
+      </div>
     </div>
-    <buttonDemos></buttonDemos>
   </div>
 </template>
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
   import Button from '@/components/Button.vue';
-  import Icon from '@/components/Icon.vue';
-  import ButtonGroup from '@/components/Button-group.vue';
-  import Input from '@/components/Input.vue';
-  import Row from '@/components/Row.vue';
-  import Col from '@/components/Col.vue';
-  import Layout from '@/components/Layout.vue';
-  import Header from '@/components/Header.vue';
-  import Content from '@/components/Content.vue';
-  import Footer from '@/components/Footer.vue';
-  import Sider from '@/components/Sider.vue';
   import Toast from '@/components/Toast.vue';
   import plugin from '@/plugin.js';
-  import Tabs from '@/components/Tabs.vue';
-  import TabsHead from '@/components/TabsHead.vue';
-  import TabsBody from '@/components/TabsBody.vue';
-  import TabsItem from '@/components/TabsItem.vue';
-  import TabsPane from '@/components/TabsPane.vue';
-  import Popover from '@/components/Popover.vue';
-  import Collapse from '@/components/Collapse.vue';
-  import CollapseItem from '@/components/CollapseItem.vue';
-  import ButtonDemos from '../docs/.vuepress/components/buttonDemos.vue';
 
   Vue.use(plugin);
 
   @Component({
     components: {
-      ButtonDemos,
-      CollapseItem,
-      Collapse,
-      Popover,
-      TabsPane,
-      TabsBody,
-      TabsItem,
-      TabsHead,
-      Tabs,
       Toast,
-      Sider,
-      Footer,
-      Content,
-      Header,
-      Layout,
-      Col,
-      Row,
-      Input,
-      ButtonGroup,
-      Icon,
       Button
     },
   })
   export default class App extends Vue {
-    selectedTab = ['1','2'];
+    top() {
+      this.$toast('上方提示');
+    }
+
+    middle() {
+      this.$toast('中间提示', {position: 'middle'});
+    }
+
+    bottom() {
+      this.$toast('下方提示', {position: 'bottom'});
+    }
+
+    always() {
+      this.$toast('一直显示', {position: 'middle', autoClose: false});
+    }
+
+    oneSecond() {
+      this.$toast('1秒自动关闭', {autoClose: 1});
+    }
+
+    closeText() {
+      this.$toast('这是一段内容', {closeButton: {text: '知道了'}});
+    }
+
+    enableHTML() {
+      this.$toast('<strong>这是一段加粗的文字</strong>', {enableHtml: true});
+    }
   }
 </script>
 

@@ -1,10 +1,14 @@
 <template>
   <div class="wrapper" :class="toastClasses">
     <div class="toast">
-      <slot v-if="!enableHtml"></slot>
-      <div v-else v-html="$slots.default[0]"></div>
-      <div class="line"></div>
-      <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
+      <div class="text">
+        <slot v-if="!enableHtml"></slot>
+        <div v-else v-html="$slots.default[0]"></div>
+      </div>
+      <div class="close" v-if="closeButton" @click="onClickClose">
+        {{closeButton.text}}
+        <div class="line"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -20,12 +24,11 @@
   @Component
   export default class Toast extends Vue {
     @Prop({
-      type: [Boolean, Number], default: 5,
+      type: [Boolean, Number], default: 3,
       validator(value: boolean | number): boolean {
         return value === false || typeof value === 'number';
       }
     }) autoClose?: boolean | number;
-    @Prop({type: Number, default: 2}) autoCloseDelay!: number;
     @Prop(Boolean) enableHtml?: boolean;
 
     @Prop({
@@ -106,6 +109,13 @@
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 99;
+
+    > .toast {
+      > .text {
+        padding-right: 16px;
+      }
+    }
 
     &.position-top {
       top: 0;
@@ -150,12 +160,13 @@
       border-left: 1px solid #666;
       height: 100%;
       position: absolute;
-      right: 73px;
+      top: 0;
+      left: 0;
     }
 
     .close {
+      position: relative;
       padding-left: 16px;
-      margin-left: 16px;
       flex-shrink: 0;
     }
 

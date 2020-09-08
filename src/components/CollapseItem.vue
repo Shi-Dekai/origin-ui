@@ -2,6 +2,12 @@
   <div class="collapse-item">
     <div class="title" @click="toggle">
       {{title}}
+      <div class="open" v-if="open">
+        <Icon name="down"></Icon>
+      </div>
+      <div class="close" v-else>
+        <Icon name="right"></Icon>
+      </div>
     </div>
     <div class="content" v-if="open">
       <slot></slot>
@@ -12,8 +18,10 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component, Inject, Prop} from 'vue-property-decorator';
-
-  @Component
+  import Icon from './Icon.vue';
+  @Component({
+    components: {Icon}
+  })
   export default class CollapseItem extends Vue {
     open = false;
     @Prop({type: String, required: true}) title!: string;
@@ -47,6 +55,18 @@
       display: flex;
       align-items: center;
       padding: 0 8px;
+      position: relative;
+
+      > .close {
+        position: absolute;
+        right: 16px;
+      }
+
+      >
+      .open {
+        position: absolute;
+        right: 16px;
+      }
     }
 
     &:first-child {

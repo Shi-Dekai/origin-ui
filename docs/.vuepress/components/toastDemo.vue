@@ -32,12 +32,10 @@
   })
   export default class toastDemo extends Vue {
     top() {
-      console.log(this.$toast)
       this.$toast('上方提示');
     }
 
     middle() {
-      console.log('MIDDLE');
       this.$toast('中间提示', {position: 'middle'});
     }
 

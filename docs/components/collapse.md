@@ -17,7 +17,9 @@ title: collapse-手风琴
 
 ## 基本使用
 **效果：** 
+<ClientOnly>
 <collapseDemo></collapseDemo>
+</ClientOnly>
 
 代码：
 ```vue

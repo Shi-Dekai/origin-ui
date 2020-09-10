@@ -18,17 +18,15 @@
     @Inject() eventBus!: Vue;
 
     mounted() {
-      this.eventBus.$on('update:selected', (item: string, vm: Vue) => {
-        const index = [...vm.$el.parentNode.querySelectorAll('.tabs-item')].indexOf(vm.$el);
-
-        Object.assign(this.$refs.line.style, {
-          width: vm.$el.offsetWidth + 'px',
-          left: index * vm.$el.offsetWidth + 'px',
-          top: vm.$el.offsetHeight - 1 + 'px'
+      this.eventBus.$on('update:headChange', (el: HTMLElement) => {
+        const index = [...el.parentNode!.querySelectorAll('.tabs-item')].indexOf(el);
+        Object.assign((this.$refs.line as HTMLElement).style, {
+          width: el.offsetWidth + 'px',
+          left: index * el.offsetWidth + 'px',
+          top: el.offsetHeight - 1 + 'px'
         });
       });
     }
-
   }
 </script>
 

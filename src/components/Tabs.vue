@@ -20,15 +20,7 @@
     @Provide() eventBus = new Vue();
 
     mounted() {
-      this.$children.forEach((vm) => {
-        if (vm.$options.name === 'TabsHead') {
-          vm.$children.forEach((vm2) => {
-            if (vm2.$options.name === 'TabsItem' && vm2.$props.name === this.selected) {
-              this.eventBus.$emit('update:selected', this.selected, vm2);
-            }
-          });
-        }
-      });
+      this.eventBus.$emit('update:selected', this.selected)
     }
   }
 </script>

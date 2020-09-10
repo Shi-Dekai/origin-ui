@@ -19,7 +19,9 @@ title: toast-弹窗
 
 ## 基本使用
 **效果：** 
+<ClientOnly>
 <toastDemo></toastDemo>
+</ClientOnly>
 
 代码：
 ```vue
@@ -27,12 +29,10 @@ title: toast-弹窗
 export default {
   methods: {
     top() {
-      console.log(this.$toast)
       this.$toast('上方提示');
     }
     
     middle() {
-      console.log('MIDDLE');
       this.$toast('中间提示', {position: 'middle'});
     }
     

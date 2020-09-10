@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/origin-ui/',
   title: 'origin-ui',
   description: 'Just playing around',
   plugins: [
@@ -13,7 +14,7 @@ module.exports = {
     nav: [
       {text: '首页', link: '/'},
       {text: '文档', link: '/install/'},
-      { text: 'GitHub', link: 'https://github.com/Shi-Dekai' },
+      {text: 'GitHub', link: 'https://github.com/Shi-Dekai'},
     ],
     sidebar: [
       {

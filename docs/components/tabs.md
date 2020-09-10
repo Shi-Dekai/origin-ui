@@ -22,7 +22,9 @@ title: tabs-标签
 ```
 ## 基本使用
 **效果：**
+<ClientOnly>
 <tabsDemo></tabsDemo>
+</ClientOnly>
 
 代码：
 ```vue

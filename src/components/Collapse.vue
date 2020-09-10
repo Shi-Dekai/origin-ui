@@ -31,7 +31,6 @@
         const selectedCopy = JSON.parse(JSON.stringify(this.selected));
         const index = selectedCopy.indexOf(name);
         selectedCopy.splice(index, 1);
-        console.log('-1');
         this.eventBus.$emit('update:selected', selectedCopy);
         this.$emit('update:selected', selectedCopy);
       });

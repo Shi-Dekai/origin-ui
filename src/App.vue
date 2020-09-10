@@ -1,4 +1,48 @@
 <template>
+  <div class="wrapper">
+    默认标签
+    <o-tabs :selected="selectedTab">
+      <o-tabs-head>
+        <o-tabs-item name="sport">体育</o-tabs-item>
+        <o-tabs-item name="game">游戏</o-tabs-item>
+        <o-tabs-item name="book">书籍</o-tabs-item>
+      </o-tabs-head>
+      <o-tabs-body>
+        <o-tabs-pane name="sport">内容：体育</o-tabs-pane>
+        <o-tabs-pane name="game">内容：游戏</o-tabs-pane>
+        <o-tabs-pane name="book">内容：书籍</o-tabs-pane>
+      </o-tabs-body>
+    </o-tabs>
+    禁用标签
+    <o-tabs :selected="selectedTab">
+      <o-tabs-head>
+        <o-tabs-item name="sport">体育</o-tabs-item>
+        <o-tabs-item name="game">游戏</o-tabs-item>
+        <o-tabs-item name="book" disabled>书籍</o-tabs-item>
+      </o-tabs-head>
+      <o-tabs-body>
+        <o-tabs-pane name="sport">内容：体育</o-tabs-pane>
+        <o-tabs-pane name="game">内容：游戏</o-tabs-pane>
+        <o-tabs-pane name="book">内容：书籍</o-tabs-pane>
+      </o-tabs-body>
+    </o-tabs>
+    附加按钮
+    <o-tabs :selected="selectedTab">
+      <o-tabs-head>
+        <o-tabs-item name="sport">体育</o-tabs-item>
+        <o-tabs-item name="game">游戏</o-tabs-item>
+        <o-tabs-item name="book">书籍</o-tabs-item>
+        <template slot="actions">
+          <o-button>设置</o-button>
+        </template>
+      </o-tabs-head>
+      <o-tabs-body>
+        <o-tabs-pane name="sport">内容：体育</o-tabs-pane>
+        <o-tabs-pane name="game">内容：游戏</o-tabs-pane>
+        <o-tabs-pane name="book">内容：书籍</o-tabs-pane>
+      </o-tabs-body>
+    </o-tabs>
+  </div>
 </template>
 
 <script lang="ts">
@@ -34,11 +78,11 @@
       CollapseItem,
       Collapse,
       Popover,
-      TabsPane,
-      TabsBody,
-      TabsItem,
-      TabsHead,
-      Tabs,
+      'o-tabs-pane':TabsPane,
+      'o-tabs-body':TabsBody,
+      'o-tabs-item':TabsItem,
+      'o-tabs-head':TabsHead,
+      'o-tabs':Tabs,
       Toast,
       Sider,
       Footer,
@@ -50,7 +94,7 @@
       Input,
       ButtonGroup,
       Icon,
-      Button
+      'o-button':Button
     },
   })
   export default class App extends Vue {

@@ -14,8 +14,9 @@ title: button-按钮
 ```
 ## 基本使用
 效果： 
-
+<ClientOnly>
 <buttonDemos></buttonDemos>
+</ClientOnly>
 
 代码：
 
@@ -59,9 +60,7 @@ export default {
 
 ### 基本使用
 效果：
-
 <buttonGroupDemos></buttonGroupDemos>  
-
 代码：
 
 ```vue

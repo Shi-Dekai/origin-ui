@@ -17,8 +17,9 @@ title: input-输入框
 
 ## 基本使用
 效果：
-
+<ClientOnly>
 <inputDemos></inputDemos>
+</ClientOnly>
 
 代码：
 
